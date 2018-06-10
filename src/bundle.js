@@ -85,6 +85,16 @@
 	    }
 
 	    _createClass(Index, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log('Index - 组件挂载之前');
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log('Index - 组件挂载之后');
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return React.createElement(
@@ -22006,6 +22016,16 @@
 	    }
 
 	    _createClass(Hearder, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log('Hearder - 组件挂载之前');
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log('Hearder - 组件挂载之后');
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            return _react2.default.createElement(
@@ -22059,6 +22079,16 @@
 	    }
 
 	    _createClass(Home, [{
+	        key: 'componentWillMount',
+	        value: function componentWillMount() {
+	            console.log('Home - 组件挂在之前');
+	        }
+	    }, {
+	        key: 'componentDidMount',
+	        value: function componentDidMount() {
+	            console.log('Home - 组件挂在之后');
+	        }
+	    }, {
 	        key: 'render',
 	        value: function render() {
 	            var userName = 'guojingang';
