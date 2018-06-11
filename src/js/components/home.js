@@ -1,23 +1,32 @@
 import React from 'react';
+import HomeChild from './homeChild';
 
 export default class Home extends React.Component {
-    componentWillMount () {
-        console.log('Home - 组件挂在之前');
+    constructor () {
+        super(); // 继承基类的属性和方法
+        this.state = {
+            name: 'orange',
+            age: 24
+        }
     }
-
-    componentDidMount () {
-        console.log('Home - 组件挂在之后');
+    componentWillMount () { // 父组件向子组件传递属性值
+        this.setState({
+            name: this.props.name,
+            age: this.props.age
+        })
     }
-
+    clickChangeAge (age) {
+        this.setState({age: age});
+    }
+    changeAgeEvent (event) {
+        this.setState({age:event.target.value});
+    }
     render () {
-        var userName = 'guojingang';
-        var html = '性别：\u0020我是女的'; // &nbsp; = \u0020
         return (
             <div>
-                <h1>这里是body</h1>
-                <p>{userName == '' ? '用户未登录' : userName}</p>
-                <p>{html}</p>
-                <p dangerouslySetInnerHTML = {{__html : html}}></p>
+                <p>{this.state.name} : {this.state.age}</p>
+                <input type="button" value="点我" onClick = {this.clickChangeAge.bind(this, 50)}/>
+                <HomeChild changeAgeEvent = {this.changeAgeEvent.bind(this)} />
             </div>
         )
     }

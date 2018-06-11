@@ -101,7 +101,7 @@
 	                'div',
 	                null,
 	                React.createElement(_header2.default, null),
-	                React.createElement(_home2.default, null),
+	                React.createElement(_home2.default, { name: 'hjj', age: 25 }),
 	                React.createElement(_footer2.default, null)
 	            );
 	        }
@@ -4828,6 +4828,10 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _homeChild = __webpack_require__(187);
+
+	var _homeChild2 = _interopRequireDefault(_homeChild);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -4842,43 +4846,50 @@
 	    function Home() {
 	        _classCallCheck(this, Home);
 
-	        return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));
+	        // 继承基类的属性和方法
+	        var _this = _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).call(this));
+
+	        _this.state = {
+	            name: 'orange',
+	            age: 24
+	        };
+	        return _this;
 	    }
 
 	    _createClass(Home, [{
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
-	            console.log('Home - 组件挂在之前');
+	            // 父组件向子组件传递属性值
+	            this.setState({
+	                name: this.props.name,
+	                age: this.props.age
+	            });
 	        }
 	    }, {
-	        key: 'componentDidMount',
-	        value: function componentDidMount() {
-	            console.log('Home - 组件挂在之后');
+	        key: 'clickChangeAge',
+	        value: function clickChangeAge(age) {
+	            this.setState({ age: age });
+	        }
+	    }, {
+	        key: 'changeAgeEvent',
+	        value: function changeAgeEvent(event) {
+	            this.setState({ age: event.target.value });
 	        }
 	    }, {
 	        key: 'render',
 	        value: function render() {
-	            var userName = 'guojingang';
-	            var html = '\u6027\u522B\uFF1A \u6211\u662F\u5973\u7684'; // &nbsp; = \u0020
 	            return _react2.default.createElement(
 	                'div',
 	                null,
 	                _react2.default.createElement(
-	                    'h1',
-	                    null,
-	                    '\u8FD9\u91CC\u662Fbody'
-	                ),
-	                _react2.default.createElement(
 	                    'p',
 	                    null,
-	                    userName == '' ? '用户未登录' : userName
+	                    this.state.name,
+	                    ' : ',
+	                    this.state.age
 	                ),
-	                _react2.default.createElement(
-	                    'p',
-	                    null,
-	                    html
-	                ),
-	                _react2.default.createElement('p', { dangerouslySetInnerHTML: { __html: html } })
+	                _react2.default.createElement('input', { type: 'button', value: '\u70B9\u6211', onClick: this.clickChangeAge.bind(this, 50) }),
+	                _react2.default.createElement(_homeChild2.default, { changeAgeEvent: this.changeAgeEvent.bind(this) })
 	            );
 	        }
 	    }]);
@@ -22178,6 +22189,60 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ }),
+/* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var homeChild = function (_React$Component) {
+	    _inherits(homeChild, _React$Component);
+
+	    function homeChild() {
+	        _classCallCheck(this, homeChild);
+
+	        return _possibleConstructorReturn(this, (homeChild.__proto__ || Object.getPrototypeOf(homeChild)).apply(this, arguments));
+	    }
+
+	    _createClass(homeChild, [{
+	        key: "render",
+	        value: function render() {
+	            return _react2.default.createElement(
+	                "div",
+	                null,
+	                _react2.default.createElement(
+	                    "p",
+	                    null,
+	                    "\u7528\u6237\u4FEE\u6539\u5E74\u9F84\uFF1A",
+	                    _react2.default.createElement("input", { type: "text", onChange: this.props.changeAgeEvent })
+	                )
+	            );
+	        }
+	    }]);
+
+	    return homeChild;
+	}(_react2.default.Component);
+
+	exports.default = homeChild;
 
 /***/ })
 /******/ ]);
