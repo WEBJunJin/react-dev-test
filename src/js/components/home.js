@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import HomeChild from './homeChild';
+import ReactMixin from 'react-mixin';
+import Mixins from './mixins';
 
 export default class Home extends React.Component {
     constructor () {
@@ -24,6 +26,8 @@ export default class Home extends React.Component {
 
         // 第二种 使用组件的refs属性
         // this.refs.myBtn.style.color = 'red';
+        debugger
+        Mixins.log();
     }
     changeAgeEvent (event) {
         this.setState({age:event.target.value});
@@ -46,5 +50,6 @@ Home.propTypes = {
 
 Home.defaultProps = {name: 'hjj'} // 默认props
 
+ReactMixin(Home.prototype, Mixins) // es6不支持mixin，需要用ReactMixin插件来兼容
 
 
