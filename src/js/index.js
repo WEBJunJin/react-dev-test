@@ -17,7 +17,7 @@ export default class Index extends React.Component {
         return (
             <div>
                 <Header/>
-                <Home name={'hjj'} age={25}/>
+                <Home  age={25}/>
                 <Footer/>
             </div>
         )

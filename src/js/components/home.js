@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import HomeChild from './homeChild';
 
 export default class Home extends React.Component {
@@ -17,6 +18,12 @@ export default class Home extends React.Component {
     }
     clickChangeAge (age) {
         this.setState({age: age});
+        // 第一种获取dom元素的方法
+        // var myBtn = document.getElementById('myBtn');
+        // ReactDOM.findDOMNode(myBtn).style.color = 'red';
+
+        // 第二种 使用组件的refs属性
+        // this.refs.myBtn.style.color = 'red';
     }
     changeAgeEvent (event) {
         this.setState({age:event.target.value});
@@ -25,9 +32,19 @@ export default class Home extends React.Component {
         return (
             <div>
                 <p>{this.state.name} : {this.state.age}</p>
-                <input type="button" value="点我" onClick = {this.clickChangeAge.bind(this, 50)}/>
-                <HomeChild changeAgeEvent = {this.changeAgeEvent.bind(this)} />
+                <input type="button" id="myBtn" ref="myBtn" value="点我" onClick = {this.clickChangeAge.bind(this, 50)}/>
+                <HomeChild {...this.props} id={4} changeAgeEvent = {this.changeAgeEvent.bind(this)} />
             </div>
         )
     }
 }
+
+Home.propTypes = {
+    name: React.PropTypes.string.isRequired, // isRequired 验证必传
+    age: React.PropTypes.number // 验证类型
+}
+
+Home.defaultProps = {name: 'hjj'} // 默认props
+
+
+
