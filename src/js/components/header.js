@@ -1,15 +1,20 @@
 import React from 'react';
 
 export default class Hearder extends React.Component {
-    componentWillMount () {
-        console.log('Hearder - 组件挂载之前');
-    }
-    componentDidMount () {
-        console.log('Hearder - 组件挂载之后');
-    }
     render () {
+        const myStyle = {
+            header: {
+                backgroundColor: 'black',
+                color: 'white',
+                paddingTop: '15px'
+            },
+            pdButton: {
+                paddingButton: '15px'
+            }
+        }
+        // 内联样式和css样式的引用
         return (
-            <header>
+            <header style={myStyle.header} className="smallFont"> 
                 <h1>这里是头部</h1>
             </header>
         )
